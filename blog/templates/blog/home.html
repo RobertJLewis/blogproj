@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Document</title>
+    {% endif %}
+
 </head>
 <body>
     <h1>
         Blog Home
-    </h1>
+    </h1> 
+    <hr>
+   
+    {% for posts in posts %} 
+        <h3>{{ posts.title }}</h3>
+        <p>By: {{ posts.author }} on {{ posts.autdate_posted }}</p>
+        <p>{{ posts.content }}</p>
+        <hr>
+    {% endfor %}
+
 </body>
 </html>
