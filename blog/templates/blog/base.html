@@ -18,9 +18,9 @@
         <div class="container">
             <img src="{% static 'blog/templates/static/blog/images/threadly.webp' %}" alt="Logo" style="padding-right: 10px; height: 50px; width: 50px;">
             <!-- <a class="navbar-brand mr-4" href="">Django Blog</a> -->
-          <buttwon class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-          </buttwon>
+          </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
 
@@ -31,54 +31,45 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
 
-                <a href=# id="auth-links">
+              <a href="{% url 'blog-new' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Create Post
-            </a>
-                <a href=# id="auth-links">
+              </a>
+              <a href="{% url 'profile' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Profile
-            </a>
-                <a href=# id="auth-links">
+              </a>
+              <a href="{% url 'logout' %}" id="auth-links">
                 <span></span>
-                <span></span>c
+                <span></span>
                 <span></span>
                 <span></span>
                 Logout
-            </a>
-            <a href=# id="auth-links">
+              </a>
+              <a href="{% url 'login' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Login
-            </a>
-            <a href=# id="auth-links">
+              </a>
+              <a href="{% url 'register' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Register
-            </a>
-            <!-- <a href="#">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Neon button
-            </a> -->
+              </a>
 
-
-
-        </div>
+            </div>
           </div>
-        </div>
+        </div>  
       </nav>
     </header>
     <main role="main" class="container">
@@ -143,19 +134,16 @@
 
         <footer class="" >
           <ul class="nav justify-content-center border-bottom"  style="margin-top: 60px;">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="admin/" class="nav-link px-2 text-muted">Admin</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            <li class="nav-item"><a href="{% url 'blog-home' %}" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="admin.html" class="nav-link px-2 text-muted">Admin</a></li>
+            <li class="nav-item"><a href="{% url 'blog-about' %}" class="nav-link px-2 text-muted">About</a></li>
           </ul>
           <p class="text-center text-muted">&copy; Robert Jonah Lewis</p>
         </footer>
 
     </main>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <jQuery first, then Popper.js, then Bootstrap JS ></jQuery>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
