@@ -12,13 +12,12 @@
         <img class="rounded-circle account-img" id="profile-img" src="{{ user.profile.image.url|default:'/media/profile_pics/default.png' }}" alt="User-Profile-Image"> 
       </div>
 
-      <h1 id="profile-h1">{{user.username|title}}</h1>
+      <h1 id="profile-h1">{{user.username|title}} </h1>
       <p class="title">{{user.email}}</p>
       <p>My Social Live  Below</p> 
-      <a href="#" id="auth-links"><i class="fa fa-dribbble"></i></a>
-      <a href="#" id="auth-links"><i class="fa fa-twitter"></i></a>
-      <a href="#" id="auth-links"><i class="fa fa-linkedin"></i></a>
-      <a href="#" id="auth-links"><i class="fa fa-facebook"></i></a>
+      <a href="http://www.twitter.com/" id="auth-links"><i class="fa fa-twitter"></i></a>
+      <a href="http://www.linkedin.com/" id="auth-links"><i class="fa fa-linkedin"></i></a>
+      <a href="http://www.facebook.com/" id="auth-links"><i class="fa fa-facebook"></i></a>
 
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}

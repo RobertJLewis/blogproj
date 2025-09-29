@@ -9,9 +9,10 @@ body {
 
 
 h1, h2, h3, h4, h5, h6, p {
- color: #444444;
+ color: black bold;
  font-family: 'Poppins', sans-serif;
 }
+
 
 ul {
  margin: 0;
@@ -221,7 +222,7 @@ svg{
  border-radius: 30px;
 }
 #profile-h1{
-   color: rgb(255, 255, 255);
+   color: black;
    font-family: 'Poppins', sans-serif;
 
 }

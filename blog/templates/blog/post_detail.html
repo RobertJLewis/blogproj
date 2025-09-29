@@ -1,23 +1,53 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 
-        <article class="media content-section">
-            <img class="rounded-cirlce article-img" src="{{ object.author.profile.image.url }}" alt="">
-            <div class="media-body">
-              <div class="article-metadata">
-                <a class="mr-2" href="#">{{ object.author }}</a>
-                <small class="text-muted">{{ object.date_posted }}</small> <br>
-                  {% if object.author == user %}
+<article class="media content-section">
+  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="user own profile">
+  <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ object.author }}</a>
+        <small class="text-muted">{{ object.date_posted }}</small> <br>
+        {% if object.author == user %}
+          <div>
+              <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}">Update</a>
+              <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">{{ object.title }}</h2>
+      <p class="article-content">{{ object.content }}</p>
+  </div>
+</article>
 
-                    <div>
-                        <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}">Update</a>
-                        <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
-                    </div>
-                  {% endif %}
-              </div>
-              <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
-              <p class="article-content">{{ object.content }}</p>
-            </div>
-            <br>
-          </article>
+<hr>
+
+<h4>Comments</h4>
+{% for comment in object.comments.all %}
+  <div class="content-section mb-2 p-2 border rounded">
+    <strong>{{ comment.author }}</strong>
+    <small class="text-muted">{{ comment.date_posted }}</small><br>
+    {{ comment.content }}
+    {% if comment.author == user %}
+      <div class="mt-1">
+        <a class="btn btn-sm btn-outline-success" href="{% url 'comment-update' comment.id %}">Edit</a>
+        <a class="btn btn-sm btn-outline-danger" href="{% url 'comment-delete' comment.id %}">Delete</a>
+      </div>
+    {% endif %}
+  </div>
+{% empty %}
+  <p>No comments yet.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+  <hr>
+  <h5>Add a comment</h5>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Post Comment</button>
+  </form>
+{% else %}
+  <p><a href="{% url 'login' %}">Log in</a> to comment.</p>
+{% endif %}
+
 {% endblock content %}
