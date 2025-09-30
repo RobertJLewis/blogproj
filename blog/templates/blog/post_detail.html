@@ -46,8 +46,12 @@
     {{ form.as_p }}
     <button class="btn btn-primary" type="submit">Post Comment</button>
   </form>
+
+  <!-- Back button with same style -->
+  <div class="mt-2">
+    <a class="btn btn-primary" href="javascript:history.back()">← Back</a>
+  </div>
 {% else %}
   <p><a href="{% url 'login' %}">Log in</a> to comment.</p>
 {% endif %}
-
 {% endblock content %}

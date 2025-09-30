@@ -3,27 +3,28 @@
 {% block content %}
 
     {% for posts in posts %}
-        <article class="media content-section">
-            <img class="rounded-cirlce article-img" src="{{ posts.author.profile.image.url }}" alt="">
-            <div class="media-body">
-              <div class="article-metadata">
-                <a class="mr-2" href="#">{{ posts.author }}</a>
-                <small class="text-muted">{{ posts.date_posted }}</small>
-              </div>
-              <h2><a class="article-title" href="{% url 'blog-detail' posts.id %}">{{ posts.title }}</a></h2>
-              <p class="article-content">{{ posts.content }}</p>
-            </div>
-              <!-- Likes / Dislikes -->
-            <div>
-              <a href="{% url 'like-post' posts.id %}" class="btn btn-outline-success btn-sm">
-                  👍 {{ posts.total_likes }}
-              </a>
-              <a href="{% url 'dislike-post' posts.id %}" class="btn btn-outline-danger btn-sm">
-                  👎 {{ posts.total_dislikes }}
-              </a>
-          </div>
-            <br>
-          </article>
+    <article class="media content-section position-relative">
+      <img class="rounded-circle article-img" src="{{ posts.author.profile.image.url }}" alt="">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ posts.author }}</a>
+          <small class="text-muted">{{ posts.date_posted }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'blog-detail' posts.id %}">{{ posts.title }}</a></h2>
+        <p class="article-content">{{ posts.content }}</p>
+    
+        <!-- Like/Dislike row -->
+        <div class="d-flex justify-content-start mt-2">
+          <a href="{% url 'like-post' posts.id %}" class="btn btn-outline-success btn-sm mr-1">
+            👍 {{ posts.total_likes }}
+          </a>
+          <a href="{% url 'dislike-post' posts.id %}" class="btn btn-outline-danger btn-sm">
+            👎 {{ posts.total_dislikes }}
+          </a>
+        </div>
+      </div>
+    </article>
+    
     {% endfor  %}
 {% endblock content %}
 

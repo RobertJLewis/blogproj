@@ -1,6 +1,62 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 {% block content %}
-    <div class="container" style="background: white; padding: 20px; margin-top: 10px; border-radius: 20px;">
-        <h1>Blog About</h1>
+<div class="container" style="background: white; padding: 40px; margin-top: 20px; border-radius: 20px; line-height: 1.8;">
+
+    <!-- Page Title -->
+    <h1 style="font-size: 2.8rem; margin-bottom: 20px;">About Threadly</h1>
+    <p style="font-size: 1.2rem; color: #555;">
+        Welcome to <strong>Threadly</strong> — the ultimate hub for gamers who live and breathe video games. Whether you're here for tips, reviews, or just to geek out about your favorite titles, you’re in the right place.
+    </p>
+
+    <!-- Who We Are -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Who We Are</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        We’re a team of passionate gamers who know that gaming is more than just a hobby — it’s a lifestyle. From epic battles in massive online worlds to hidden indie gems, we play, explore, and share our experiences with you. Our goal is simple: to help gamers connect, learn, and have fun.
+    </p>
+
+    <!-- What We Do -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">What You’ll Find Here</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        Threadly is your one-stop blog for everything gaming. Here’s what we bring to your screen:
+    </p>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>🎮 <strong>Game Reviews:</strong> Honest opinions on AAA titles and indie gems alike.</li>
+        <li>📰 <strong>Gaming News:</strong> Stay up-to-date with studio announcements, patches, and eSports events.</li>
+        <li>💡 <strong>Guides & Tips:</strong> Walkthroughs, strategies, and pro advice to level up your game.</li>
+        <li>👾 <strong>Community Insights:</strong> Discussions about trends, culture, and the gaming lifestyle.</li>
+    </ul>
+
+    <!-- Why Read Us -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Why Read Threadly?</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        Because we get it. Gaming isn’t just about the scores or the graphics — it’s about the stories, the challenges, and the connections you make along the way. Threadly is designed to be a space where every gamer feels welcome, informed, and inspired.
+    </p>
+
+    <!-- Call To Action -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Get Involved</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        Have a game you love, a story to share, or just want to chat with fellow gamers? 
+        <a href="{% url 'blog-home' %}" style="text-decoration: underline; color: #007bff;">Join the conversation</a> and be part of the Threadly community.
+    </p>
+
+    <p style="margin-top: 40px; font-size: 1rem; color: #888;">
+        Thank you for stopping by — now grab your controller, keyboard, or mouse, and let's game on!
+    </p>
+    <br>
+    <!-- Bottom Image -->
+    <div class="text-center md-6">
+        <img src="{% static 'blog/images/celebrate_gaming.jpeg' %}" alt="Celebrate Gaming" style="max-width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
     </div>
-{% endblock content %}
+    <br>
+    <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <div class="navbar-nav">
+                <a href="{% url 'blog-new' %}" class="nav-item nav-link font-weight-bold" id="auth-links" style="color: #000000;">
+                    <span></span><span></span><span></span><span></span>
+                    Create Post
+                </a>
+            </div>
+        </div>
+    </div>
+</div>{% endblock content %}
