@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+
 {% block content %}
 
     {% for posts in posts %}
@@ -12,6 +13,15 @@
               <h2><a class="article-title" href="{% url 'blog-detail' posts.id %}">{{ posts.title }}</a></h2>
               <p class="article-content">{{ posts.content }}</p>
             </div>
+              <!-- Likes / Dislikes -->
+            <div>
+              <a href="{% url 'like-post' posts.id %}" class="btn btn-outline-success btn-sm">
+                  👍 {{ posts.total_likes }}
+              </a>
+              <a href="{% url 'dislike-post' posts.id %}" class="btn btn-outline-danger btn-sm">
+                  👎 {{ posts.total_dislikes }}
+              </a>
+          </div>
             <br>
           </article>
     {% endfor  %}

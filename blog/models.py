@@ -9,6 +9,14 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='disliked_posts', blank=True)
+
+    def total_likes(self):
+        return self.likes.count()
+
+    def total_dislikes(self):
+        return self.dislikes.count()
 
     def __str__(self):
         return self.title

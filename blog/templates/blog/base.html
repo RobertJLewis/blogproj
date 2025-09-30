@@ -81,15 +81,14 @@
         </div>  
     </nav>
     
-    
-          
+      
       <br>
       <br>
 
     </header>
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 {%  if messages%}
                   {% for message in messages %}
                       <div class="alert-{{ message.tags }}">
@@ -98,53 +97,12 @@
                   {% endfor %}
                 {% endif %}
             </div>
-          <div class="col-md-8">
+          <div class="col-md-12">
              {% block content %}{% endblock %}
           </div>
-          <div class="col-md-4">
-            <div class="content-sectionw">
-              <h3>Our Sidebar</h3>
-              <p class='text-muted'>You can put any information here you'd like.
-                <ul class="list-group">
-                  <li class="list-group-item list-group-item-light">Latest Posts</li>
-                  <li class="list-group-item list-group-item-light">Announcements</li>
-                  <li class="list-group-item list-group-item-light">Calendars</li>
-                  <li class="list-group-item list-group-item-light">etc</li>
-                </ul>
-              </p>
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;" style="padding-top: 120px;">
-                  <a id="list-group" style="text-decoration: none;" href="" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                    <span class="fs-5 fw-semibold" id="gist-btn">Gaming News</span>
-                  </a>
-                  <div class="list-group list-group-flush border-bottom scrollarea">
-                    <a href="#" class="list-group-item list-group-item-action  lh-tight" aria-current="true">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong class="mb-1">Leveling Up Dreams: From Player to Game Developer
-                      </strong>
-                        <small>Wed</small>
-                      </div>
-                      <div class="col-10 mb-1 small">Growing up, I spent countless hours immersed in games... </div>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong class="mb-1">From Console to Code: Crafting Worlds One Game at a Time</strong>
-                        <small class="text-muted">Tues</small>
-                      </div>
-                      <div class="col-10 mb-1 small">What starts as a love for playing games can evolve into a passion for creating them...</div>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong class="mb-1">From Player to Game Creator</strong>
-                        <small class="text-muted">Mon</small>
-                      </div>
-                      <div class="col-10 mb-1 small">I’ve always been fascinated by games, not just playing them, but understanding what makes them magical</div>
-                    </a>
-  
-                  </div>
-                </div>
-            </div>
-          </div>
         </div>
+
+        
 
 
         <footer class="" >
@@ -154,6 +112,7 @@
             <li class="nav-item"><a href="{% url 'blog-about' %}" class="nav-link px-2 text-muted">About</a></li>
           </ul>
           <p class="text-center text-muted">&copy; Robert Jonah Lewis</p>
+
         </footer>
 
     </main>

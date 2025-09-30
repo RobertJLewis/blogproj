@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post, Comment
-from .forms import CommentForm                
-
+from .forms import CommentForm        
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Post       
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -119,3 +121,38 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_success_url(self):
         return self.object.post.get_absolute_url()
+
+
+@login_required
+def like_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    user = request.user
+
+    # Remove dislike if it exists
+    if user in post.dislikes.all():
+        post.dislikes.remove(user)
+
+    # Toggle like
+    if user in post.likes.all():
+        post.likes.remove(user)
+    else:
+        post.likes.add(user)
+
+    return redirect(request.META.get('HTTP_REFERER', 'blog-home'))
+
+@login_required
+def dislike_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    user = request.user
+
+    # Remove like if it exists
+    if user in post.likes.all():
+        post.likes.remove(user)
+
+    # Toggle dislike
+    if user in post.dislikes.all():
+        post.dislikes.remove(user)
+    else:
+        post.dislikes.add(user)
+
+    return redirect(request.META.get('HTTP_REFERER', 'blog-home'))
