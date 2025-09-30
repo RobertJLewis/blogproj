@@ -49,7 +49,7 @@
 
   <!-- Back button with same style -->
   <div class="mt-2">
-    <a class="btn btn-primary" href="javascript:history.back()">← Back</a>
+    <a href="{% url 'blog-home' %}" class="btn btn-secondary mt-2">Back to Home</a>
   </div>
 {% else %}
   <p><a href="{% url 'login' %}">Log in</a> to comment.</p>
