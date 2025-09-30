@@ -39,3 +39,4 @@ class Comment(models.Model):
 
     def get_delete_url(self):
         return reverse('comment-delete', kwargs={'pk': self.pk})
+

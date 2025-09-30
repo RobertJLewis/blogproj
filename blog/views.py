@@ -7,6 +7,12 @@ from django.contrib.auth.decorators import login_required
 from .models import Post       
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .forms import QuickPostForm
+
+from django.views.generic import ListView
+from django.shortcuts import redirect
+from .models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
     # def home(request):
@@ -123,6 +129,19 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.object.post.get_absolute_url()
 
 
+class PostListView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'blog/home.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
+    def post(self, request, *args, **kwargs):
+        content = request.POST.get('content')
+        if content:
+            Post.objects.create(author=request.user, title=content[:50], content=content)
+        return redirect('blog-home')
+
+
 @login_required
 def like_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -156,3 +175,32 @@ def dislike_post(request, pk):
         post.dislikes.add(user)
 
     return redirect(request.META.get('HTTP_REFERER', 'blog-home'))
+
+
+@login_required
+def home(request):
+    if request.method == 'POST':
+        form = QuickPostForm(request.POST)
+        if form.is_valid():
+            quick_post = form.save(commit=False)
+            quick_post.author = request.user
+            quick_post.save()
+            return redirect('blog-home')  # refresh page
+    else:
+        form = QuickPostForm()
+
+    posts = Post.objects.all().order_by('-date_posted')
+    context = {
+        'form': form,
+        'posts': posts
+    }
+    return render(request, 'blog/home.html', context)
+
+@login_required
+def add_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        content = request.POST.get('content')
+        if content:
+            Comment.objects.create(author=request.user, post=post, content=content)
+    return redirect('blog-home')
