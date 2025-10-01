@@ -2,32 +2,50 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-    <link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="main.css">
 
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div class="cardd">
-      <div class="m-b-25"> 
-        <img class="rounded-circle account-img" id="profile-img" src="{{ user.profile.image.url|default:'/media/profile_pics/default.png' }}" alt="User-Profile-Image"> 
-      </div>
+<div class="cardd">
+  <div class="m-b-25"> 
+    <img class="rounded-circle account-img" id="profile-img" 
+         src="{{ user.profile.image.url|default:'/media/profile_pics/default.png' }}" 
+         alt="User-Profile-Image"> 
+  </div>
 
-      <h1 id="profile-h1">{{user.username|title}} </h1>
-      <p class="title">{{user.email}}</p>
-      <p>My Social Live  Below</p> 
-      <a href="http://www.twitter.com/" id="auth-links"><i class="fa fa-twitter"></i></a>
-      <a href="http://www.linkedin.com/" id="auth-links"><i class="fa fa-linkedin"></i></a>
-      <a href="http://www.facebook.com/" id="auth-links"><i class="fa fa-facebook"></i></a>
-      <p>
-        <button id="btn-profile">
-          <a href="{% url 'profile-update' %}" id="auth-links">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Update Profile
-          </a>
-        </button>
-      </p>
-    </div>
+  <h1 id="profile-h1">{{ user.username|title }}</h1>
+  <p class="title" style="color: rgb(0, 166, 255);">{{ user.email }}</p>
+
+  {% if user.profile.bio %}
+    <p class="bio">{{ user.profile.bio }}</p>
+  {% else %}
+    <p class="bio text-muted">This user hasn’t added a bio yet.</p>
+  {% endif %}
+
+  <p>My Social Links</p> 
+  <div class="social-links">
+    {% if user.profile.twitter %}
+      <a href="{{ user.profile.twitter }}" target="_blank" id="auth-links"><i class="fa fa-twitter"></i></a>
+    {% endif %}
+    {% if user.profile.linkedin %}
+      <a href="{{ user.profile.linkedin }}" target="_blank" id="auth-links"><i class="fa fa-linkedin"></i></a>
+    {% endif %}
+    {% if user.profile.facebook %}
+      <a href="{{ user.profile.facebook }}" target="_blank" id="auth-links"><i class="fa fa-facebook"></i></a>
+    {% endif %}
+  </div>
+
+  <p>
+    <button id="btn-profile">
+      <a href="{% url 'profile-update' %}" id="auth-links">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Update Profile
+      </a>
+    </button>
+  </p>
+</div>
 {% endblock content %}
