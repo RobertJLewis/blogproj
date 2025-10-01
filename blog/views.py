@@ -1,25 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post, Comment
-from .forms import CommentForm        
-from django.shortcuts import get_object_or_404
+from .forms import CommentForm, QuickPostForm
 from django.contrib.auth.decorators import login_required
-from .models import Post       
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .forms import QuickPostForm
-
-from django.views.generic import ListView
-from django.shortcuts import redirect
-from .models import Post
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-
-    # def home(request):
-    #     context = {
-    #         'posts': Post.objects.all()
-    #     }
-    #     return render(request, 'blog/home.html', context)
 
 
 def about(request):
@@ -35,7 +20,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
-    template_name = 'blog/post_detail.html'  # optional, Django guesses by default
+    template_name = 'blog/post_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -43,34 +28,28 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         return context
     
     def post(self, request, *args, **kwargs):
-        """Handle a comment being posted."""
-        self.object = self.get_object()  # current Post
+        self.object = self.get_object()
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author = request.user
             comment.post = self.object
             comment.save()
-            return redirect(self.object.get_absolute_url())  # refresh page
+            return redirect(self.object.get_absolute_url())
         context = self.get_context_data(form=form)
         return self.render_to_response(context)
 
 
-
-
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-    # def test_func(self):
-    #     post = self.get_object()
-    #     if self.request.user == post.author:
-    #         return True
-    #     return False
+    
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -83,9 +62,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
+        return self.request.user == post.author
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -95,9 +72,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
-        # if self.request.user == post.author:
-        #     return True
-        # return False
 
 
 class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -129,18 +103,7 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.object.post.get_absolute_url()
 
 
-class PostListView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = 'blog/home.html'
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
-
-    def post(self, request, *args, **kwargs):
-        content = request.POST.get('content')
-        if content:
-            Post.objects.create(author=request.user, title=content[:50], content=content)
-        return redirect('blog-home')
-
+from django.urls import reverse
 
 @login_required
 def like_post(request, pk):
@@ -177,30 +140,32 @@ def dislike_post(request, pk):
     return redirect(request.META.get('HTTP_REFERER', 'blog-home'))
 
 
+
+
 @login_required
 def home(request):
     if request.method == 'POST':
-        form = QuickPostForm(request.POST)
+        form = QuickPostForm(request.POST, request.FILES)
         if form.is_valid():
-            quick_post = form.save(commit=False)
-            quick_post.author = request.user
-            quick_post.save()
-            return redirect('blog-home')  # refresh page
+            form.save(user=request.user)
+            return redirect('blog-home')
     else:
         form = QuickPostForm()
 
     posts = Post.objects.all().order_by('-date_posted')
-    context = {
-        'form': form,
-        'posts': posts
-    }
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/home.html', {'form': form, 'posts': posts})
 
 @login_required
 def add_comment(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        content = request.POST.get('content')
-        if content:
-            Comment.objects.create(author=request.user, post=post, content=content)
-    return redirect('blog-home')
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect(post.get_absolute_url())
+    else:
+        form = CommentForm()
+    return render(request, 'blog/add_comment.html', {'form': form})

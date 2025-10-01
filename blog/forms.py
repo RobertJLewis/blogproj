@@ -7,19 +7,33 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['content']
 
+
 # Quick post form (like "What's on your mind?" box)
+from django import forms
+from .models import Post
+
 class QuickPostForm(forms.ModelForm):
-    content = forms.CharField(
-        widget=forms.Textarea(
-            attrs={
-                'placeholder': "What's on your mind?",
-                'rows': 3,
-                'class': 'form-control'
-            }
-        ),
-        label=''
-    )
+    media = forms.FileField(required=False)
 
     class Meta:
         model = Post
-        fields = ['content']
+        fields = ['title', 'content', 'image'] 
+
+    def save(self, commit=True, user=None):
+        post = super().save(commit=False)
+
+        media = self.cleaned_data.get('media')
+        if media:
+            if media.content_type.startswith('image/'):
+                post.image = media
+                post.video = None
+            elif media.content_type.startswith('video/'):
+                post.video = media
+                post.image = None
+
+        if user:
+            post.author = user
+
+        if commit:
+            post.save()
+        return post

@@ -11,6 +11,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
     dislikes = models.ManyToManyField(User, related_name='disliked_posts', blank=True)
+    image = models.ImageField(upload_to='post_images/', blank=True, null=True)
 
     def total_likes(self):
         return self.likes.count()
@@ -30,6 +31,8 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='post_images/', blank=True, null=True)
+
 
     def __str__(self):
         return f'Comment by {self.author.username} on {self.post.title}'
@@ -39,4 +42,4 @@ class Comment(models.Model):
 
     def get_delete_url(self):
         return reverse('comment-delete', kwargs={'pk': self.pk})
-
+    
