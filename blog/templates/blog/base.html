@@ -104,7 +104,11 @@
 
         
 
-        <footer class="">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      <footer class="">
+        <div>
           <ul class="nav justify-content-center border-bottom" style="margin-top: 60px;">
             <li class="nav-item">
               <a href="{% url 'blog-home' %}" class="nav-link px-3 text-muted">Home</a>
@@ -118,9 +122,15 @@
             <li class="nav-item">
               <a href="{% url 'terms-of-service' %}" class="nav-link px-3 text-muted">Terms of Service</a>
             </li>
-          </ul><br>
-          <p class="text-center text-muted">&copy; Robert Jonah Lewis</p>
-        </footer>
+          </ul>
+        </div>
+        <div class="text-center">
+          <a href="https://twitter.com/" id="auth-links"><i class="fa fa-twitter"></i></a>
+          <a href="https://linkedin.com/" id="auth-links"><i class="fa fa-linkedin"></i></a>
+          <a href="https://facebook.com/" id="auth-links"><i class="fa fa-facebook"></i></a>
+        </div>
+      </footer>
+      
         
 
     </main>
