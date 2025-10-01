@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="background: white; padding: 40px; margin-top: 20px; border-radius: 20px; line-height: 1.8;">
+
+    <!-- Page Title -->
+    <h1 style="font-size: 2.8rem; margin-bottom: 20px;">Terms of Service</h1>
+    <p style="font-size: 1.2rem; color: #555;">
+        Welcome to <strong>Threadly</strong>! By using our blog, you agree to comply with and be bound by the following terms. Please read them carefully.
+    </p>
+
+    <!-- Use of Our Blog -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Use of Our Blog</h2>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>You may use Threadly for personal, non-commercial purposes only.</li>
+        <li>All content is for informational and entertainment purposes and should not be considered professional advice.</li>
+        <li>You are responsible for any content you post, including comments and submissions.</li>
+    </ul>
+
+    <!-- User Accounts -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">User Accounts</h2>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>If you create an account, you agree to provide accurate information.</li>
+        <li>You are responsible for keeping your account credentials secure.</li>
+        <li>We may suspend or terminate accounts that violate these terms.</li>
+    </ul>
+
+    <!-- Prohibited Activities -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Prohibited Activities</h2>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>Do not post content that is unlawful, harmful, threatening, abusive, or infringes on others’ rights.</li>
+        <li>Do not disrupt the site, introduce viruses, or engage in harmful activities.</li>
+        <li>Do not use Threadly to solicit or spam other users.</li>
+    </ul>
+
+    <!-- Intellectual Property -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Intellectual Property</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        All content on Threadly, including text, images, and graphics, is owned by Threadly or its content creators and is protected by copyright laws. You may not reproduce or distribute content without permission.
+    </p>
+
+    <!-- Third-Party Links -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Third-Party Links</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        Threadly may contain links to third-party websites. We are not responsible for the content or practices of these external sites. Use them at your own discretion.
+    </p>
+
+    <!-- Limitation of Liability -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Limitation of Liability</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        Threadly is provided “as is” without warranties of any kind. We are not liable for any damages arising from the use of the blog, including loss of data or content.
+    </p>
+
+    <!-- Changes to Terms -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Changes to Terms</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        We may update these Terms of Service from time to time. Continued use of Threadly constitutes acceptance of the updated terms.
+    </p>
+
+    <!-- Contact -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Contact Us</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        If you have any questions about these Terms of Service, please 
+        <a href="{% url 'blog-about' %}" style="text-decoration: underline; color: #007bff;">contact us</a>.
+    </p>
+
+</div>
+{% endblock content %}

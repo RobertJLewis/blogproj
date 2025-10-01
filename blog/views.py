@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post, Comment
 from .forms import CommentForm, QuickPostForm
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -169,3 +170,10 @@ def add_comment(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment.html', {'form': form})
+
+
+def privacy_policy(request):
+    return render(request, 'blog/privacy_policy.html')
+
+def terms_of_service(request):
+    return render(request, 'blog/terms_of_service.html')

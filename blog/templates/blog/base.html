@@ -104,16 +104,24 @@
 
         
 
-
-    <footer class="" >
-      <ul class="nav justify-content-center border-bottom"  style="margin-top: 60px;">
-        <li class="nav-item"><a href="{% url 'blog-home' %}" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="admin.html" class="nav-link px-2 text-muted">Admin</a></li>
-        <li class="nav-item"><a href="{% url 'blog-about' %}" class="nav-link px-2 text-muted">About</a></li>
-      </ul>
-      <p class="text-center text-muted">&copy; Robert Jonah Lewis</p>
-
-    </footer>
+        <footer class="">
+          <ul class="nav justify-content-center border-bottom" style="margin-top: 60px;">
+            <li class="nav-item">
+              <a href="{% url 'blog-home' %}" class="nav-link px-3 text-muted">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'blog-about' %}" class="nav-link px-3 text-muted">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'privacy-policy' %}" class="nav-link px-3 text-muted">Privacy Policy</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'terms-of-service' %}" class="nav-link px-3 text-muted">Terms of Service</a>
+            </li>
+          </ul><br>
+          <p class="text-center text-muted">&copy; Robert Jonah Lewis</p>
+        </footer>
+        
 
     </main>
 
@@ -123,3 +131,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+
+
+
+

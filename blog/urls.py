@@ -17,6 +17,6 @@ urlpatterns = [
     path('dislike/<int:pk>/', views.dislike_post, name='dislike-post'),
     path('', views.home, name='blog-home'),
     path('comment/<int:pk>/', views.add_comment, name='add-comment'),
-
-
+    path('privacy-policy/', views.privacy_policy, name='privacy-policy'), 
+    path('terms-of-service/', views.terms_of_service, name='terms-of-service'),  
 ]

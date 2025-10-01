@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="background: white; padding: 40px; margin-top: 20px; border-radius: 20px; line-height: 1.8;">
+
+    <!-- Page Title -->
+    <h1 style="font-size: 2.8rem; margin-bottom: 20px;">Privacy Policy</h1>
+    <p style="font-size: 1.2rem; color: #555;">
+        At <strong>Threadly</strong>, your privacy is important to us. This page explains what information we collect, how we use it, and your rights regarding your personal data while using our blog.
+    </p>
+
+    <!-- Information We Collect -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Information We Collect</h2>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>📧 <strong>Account Information:</strong> If you register or comment, we collect your username, email, and profile info.</li>
+        <li>🌐 <strong>Usage Data:</strong> Pages you visit, how long you stay, and interactions on the site.</li>
+        <li>💻 <strong>Device Information:</strong> Browser type, operating system, and IP address.</li>
+        <li>🍪 <strong>Cookies:</strong> We may use cookies to improve your experience and remember your preferences.</li>
+    </ul>
+
+    <!-- How We Use Your Information -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">How We Use Your Information</h2>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>To provide and improve our content and services.</li>
+        <li>To respond to your comments, questions, or inquiries.</li>
+        <li>To send updates and information if you opt in.</li>
+        <li>To analyse site usage and trends to enhance the community experience.</li>
+    </ul>
+
+    <!-- Sharing Your Information -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Sharing Your Information</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        We do not sell your information. We may share data with trusted third parties to help operate the blog or comply with the law, such as hosting providers and analytics services.
+    </p>
+
+    <!-- Your Rights -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Your Rights</h2>
+    <ul style="font-size: 1.1rem; color: #555; padding-left: 20px;">
+        <li>Access, correct, or delete your personal data.</li>
+        <li>Opt out of marketing communications at any time.</li>
+        <li>Manage cookies and preferences through your browser.</li>
+    </ul>
+
+    <!-- Security -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Security</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        We take reasonable measures to protect your data, but no method of transmission over the Internet is 100% secure.
+    </p>
+
+    <!-- Changes to This Policy -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Changes to This Policy</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        We may update this Privacy Policy from time to time. Please check this page periodically for any changes.
+    </p>
+
+    <!-- Contact -->
+    <h2 style="margin-top: 30px; font-size: 2rem;">Contact Us</h2>
+    <p style="font-size: 1.1rem; color: #555;">
+        If you have any questions about this Privacy Policy, you can 
+        <a href="{% url 'blog-about' %}" style="text-decoration: underline; color: #007bff;">contact us</a>.
+    </p>
+
+</div>
+{% endblock content %}
