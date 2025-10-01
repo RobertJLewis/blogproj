@@ -42,11 +42,26 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
 
-    # Own
+    # Your apps
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
-
 ]
+
+# AWS S3 settings (outside of INSTALLED_APPS)
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'eu-north-1')
+AWS_QUERYSTRING_AUTH = False  # public URLs
+
+
+# Tell Django to use S3 for media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -147,7 +162,7 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
