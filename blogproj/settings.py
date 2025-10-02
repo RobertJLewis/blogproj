@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Your apps
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
+    'storages',
 ]
 
 # AWS S3 settings (outside of INSTALLED_APPS)
