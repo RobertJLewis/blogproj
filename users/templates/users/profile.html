@@ -9,9 +9,9 @@
 
 <div class="cardd">
   <div class="m-b-25"> 
-    <img class="rounded-circle account-img" id="profile-img" 
-         src="{{ user.profile.image.url|default:'/media/profile_pics/default.png' }}" 
-         alt="User-Profile-Image"> 
+    <img class="rounded-circle account-img" id="profile-img"
+     src="{{ user.profile.image.url|default:MEDIA_URL|add:'profile_pics/default.png' }}"
+     alt="User-Profile-Image">
   </div>
 
   <h1 id="profile-h1">{{ user.username|title }}</h1>
