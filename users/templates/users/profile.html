@@ -9,13 +9,13 @@
 
 <div class="cardd">
   <div class="m-b-25"> 
-    <img class="rounded-circle account-img" id="profile-img"
-     src="{{ user.profile.image.url|default:MEDIA_URL|add:'profile_pics/default.png' }}"
-     alt="User-Profile-Image">
+    <img class="rounded-circle article-img" 
+    src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}https://blogproj-media.s3.eu-north-1.amazonaws.com/media/profile_pics/default.png{% endif %}" 
+    alt="profile image">
   </div>
 
   <h1 id="profile-h1">{{ user.username|title }}</h1>
-  <p class="title" style="color: rgb(0, 166, 255);">{{ user.email }}</p>
+  <p class="title" style="color: blue;">{{ user.email }}</p>
 
   {% if user.profile.bio %}
     <p class="bio">{{ user.profile.bio }}</p>
