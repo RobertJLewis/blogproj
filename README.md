@@ -387,3 +387,41 @@ DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_
 16. Enable automatic deploys Go to your Heroku app’s Deploy tab: 
 	- Connect your GitHub repo 
 	- Click Enable Automatic Deploys
+
+
+
+    ## Generating a Secure SECRET_KEY & Configuring DEBUG Settings
+When a Django project is created, it includes a default `SECRET_KEY`. Using the default key in production is a security risk. For Threadly, a strong, unique key should be generated and stored securely.
+  1. Use a tool like the [Django Secret Key Generator](https://djecrety.ir/) to create a random, secure key. Copy the generated key.
+  2. In your **Heroku Dashboard**, navigate to your app’s **Settings** tab and add a new **Config Var**:
+      Key: SECRET_KEY Value: <paste your generated secret key>
+  3. In `settings.py`, update the `SECRET_KEY` definition to retrieve the value from the environment:
+      import os
+      SECRET_KEY = os.environ.get('SECRET_KEY', ' ')
+  4. Update the DEBUG setting so it is only enabled during development:
+    DEBUG = 'DEVELOPMENT' in os.environ
+  5. Save your changes, then commit and push to GitHub:
+      git add .
+      git commit -m "Configure SECRET_KEY and DEBUG for secure deployment"
+      git push origin main.
+
+
+
+## Local Development
+To run Threadly on your local machine, you will need to fork and clone the repository, then install the required dependencies within a virtual environment.
+
+## How to Fork
+To create your own copy of this repository:
+  1. Log in (or sign up) to GitHub.
+  2. Navigate to the repository: `your-username/threadly`.
+  3. Click the **Fork** button in the top-right corner of the page to create a personal copy.
+
+## How to Clone
+To clone your forked Threadly repository:
+  1. Log in to GitHub.
+  2. Navigate to your forked repository: `robertjlewis/threadly`.
+  3. Click the **Code** button and choose whether to clone with **HTTPS**, **SSH**, or **GitHub CLI**. Copy the link provided.
+  4. Open the terminal in your code editor and navigate to the directory where you want to clone the repository.
+  5. Run the following command, pasting the link you copied: git clone <(https://github.com/RobertJLewis/blogproj)>
+  6. Set Up a Virtual Environment: python3 -m venv env
+  7. Install the required packages from requirements.txt by running: pip3 install -r requirements.txt
