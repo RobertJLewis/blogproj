@@ -24,6 +24,7 @@ ul {
 
 }
 
+
 .site-header .navbar-nav .nav-link {
  color: #dfe4e8;
 }
@@ -49,6 +50,7 @@ ul {
  color: #444444;
 }
 
+
 a.article-title:hover {
  color: #9900ff;
  text-decoration: none;
@@ -61,7 +63,7 @@ a.article-title:hover {
 .article-img {
  height: 65px;
  width: 65px;
- margin-right: 16px;
+ margin: 16px;
 }
 
 .article-metadata {
@@ -221,6 +223,7 @@ svg{
  text-align: center;
  border-radius: 30px;
 }
+
 #profile-h1{
    color: black;
    font-family: 'Poppins', sans-serif;
