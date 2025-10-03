@@ -111,3 +111,14 @@ The Threadly platform has been designed around clear user stories to guide the s
 Finally, all users are provided with friendly, informative error pages (e.g., 404 or 500) and see their most recent posts first in their dashboard, ensuring clarity, accessibility, and a smooth user experience.
 
 
+
+## Database Schema
+Threadly uses a relational database (PostgreSQL) to provide structured and reliable storage, with support for referential integrity, ideal for managing user accounts, posts, comments, and likes.
+
+The MVP initially focused on a **Post** model linked to Django’s built-in **User** model. Each post stores core information such as title, content, category, creation date, and an optional image. This setup enabled rapid prototyping, full CRUD functionality, and integration with the Django admin panel.
+
+During development, it became clear that additional granularity was needed to support user interactions such as comments and likes. To address this, dedicated **Comment** and **Like** models were introduced. Each comment is linked to a post and its author, while likes are linked to both the user and the post, establishing clear one-to-many relationships. This structure improves data accuracy, scalability, and the ability to extend functionality in the future, such as filtering posts, sorting by popularity, or displaying user interactions at the post level.
+
+The schema follows relational database best practices, reducing redundancy, maintaining clarity, and supporting future enhancements to Threadly’s interactive features.
+
+
