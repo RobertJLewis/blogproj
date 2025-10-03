@@ -263,3 +263,29 @@ The Register page allows new users to create an account.
   - Enables new users to join the Threadly community.
   - Ensures accurate account creation and security.
   - Prepares users for personalised interaction with the platform.
+
+
+---
+
+### Profile Page
+The Profile page is a personalised space where users can manage their account and content.
+
+**What it does:**
+  - Displays the user’s information and profile image.
+  - Allows updates to username, email, password, and profile image.
+  - Shows the user’s posts with options to edit or delete them.
+
+**User Benefits:**
+  - Gives users control over their personal data and content.
+  - Encourages engagement and ownership of posts.
+  - Provides a clear, user-friendly interface for account management.
+
+**Interactive Elements:**
+  - Editable profile form fields.
+  - Upload button for profile images.
+  - Links to edit or delete posts created by the user.
+
+
+### Error Pages
+Threadly includes custom error pages to provide a friendly, branded experience whenever something goes wrong. The 400 page handles malformed or invalid requests, the 403 page addresses attempts to access restricted content, the 404 page manages broken or incorrect links, and the 500 page responds to unexpected server errors. Each page features gaming-themed illustrations and clear calls-to-action, guiding users back to the homepage while maintaining visual consistency and brand identity. These pages reduce confusion, preserve trust, and ensure a polished user experience even in error scenarios.
+
