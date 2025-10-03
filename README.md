@@ -425,3 +425,37 @@ To clone your forked Threadly repository:
   5. Run the following command, pasting the link you copied: git clone <(https://github.com/RobertJLewis/blogproj)>
   6. Set Up a Virtual Environment: python3 -m venv env
   7. Install the required packages from requirements.txt by running: pip3 install -r requirements.txt
+
+
+## Technologies Used
+### Languages
+  - HTML  
+  - CSS  
+  - JavaScript  
+  - Python  
+
+### Frameworks, Libraries & Tools
+  - **Django** – Version 4.2.20 – The main web framework used to build the application.  
+  - **Django Allauth** – Version 65.8.0 – Handles authentication, registration, and account management for users.  
+  - **Django Environ** – Version 0.12.0 – Manages environment variables from a `.env` file for secure configuration.  
+  - **dj-database-url** – Version 0.5.0 – Simplifies database configuration for deployment on Heroku.  
+  - **Pillow** – Version 11.2.1 – Processes and manages media uploads, such as user profile images.  
+  - **psycopg2-binary** – Version 2.9.10 – PostgreSQL adapter used to connect Django to the production database.  
+  - **Crispy Forms** – Version 2025.4 – Renders Django forms with Bootstrap 5 styling for a polished UI.  
+  - **Bootstrap 5** – Front-end framework for building responsive, mobile-first interfaces.  
+  - **Gunicorn** – Version 20.1.0 – WSGI HTTP server used for deploying the Django application on Heroku.  
+  - **Whitenoise** – Version 6.5.0 – Serves static files efficiently in production environments.  
+
+
+## Design & Visuals
+  - **Adobe Illustrator** – Designed the Threadly logo and key UI elements to reflect the gaming theme.  
+  - **Adobe Photoshop** – Cropped, resized, and exported images in WebP format to optimise load times and maintain visual quality for posts and user avatars.  
+
+## Development & Deployment
+  - **Heroku** – Cloud platform used to deploy the live Threadly application.  
+  - **Git** – Version control system to track development progress and manage code changes.  
+  - **GitHub** – Repository hosting and collaboration platform for the project.  
+  - **Pip** – Python package manager for installing project dependencies.  
+  - **Visual Studio Code** – Primary code editor for writing and debugging Django and front-end code.  
+  - **Google Fonts** – Integrated modern, readable fonts across the blog.  
+  - **Font Awesome** – Icon library used to enhance UI elements like buttons, navigation, and social links.  
