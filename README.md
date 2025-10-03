@@ -237,3 +237,29 @@ The Create Post page allows users to publish new content to the platform.
   - Submit button to publish the post directly to the feed.
 
 ---
+
+### Login & Logout Pages
+These pages handle user authentication and session management.
+
+**What it does:**
+  - Login page allows registered users to access their account.
+  - Logout option securely ends the session.
+
+**User Benefits:**
+  - Provides secure access to personalised dashboards.
+  - Protects user accounts and content.
+  - Simplifies returning to the platform safely.
+
+---
+
+### Register Page
+The Register page allows new users to create an account.
+
+**What it does:**
+  - Collects basic information like username, email, password, and optional profile image.
+  - Includes form validation to prevent incomplete or invalid submissions.
+
+**User Benefits:**
+  - Enables new users to join the Threadly community.
+  - Ensures accurate account creation and security.
+  - Prepares users for personalised interaction with the platform.
