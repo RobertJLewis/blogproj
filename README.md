@@ -1,6 +1,6 @@
 # Introduction:
 ### Project Milestone 3: for Code Institute Full-Stack Development Program: Django Framework
-This project demonstrates the implementation of the Django framework with Python on the back end to deliver an intuitive, interactive blog-sharing platform. The application adopts a Reddit-style structure, enabling users to register, authenticate, and manage their accounts seamlessly. Within the platform, users can create, edit, and delete blog posts across multiple content categories, as well as engage with others by posting comments and liking content.
+This project demonstrates the implementation of the Django framework with Python on the back end to deliver an intuitive, interactive blog-sharing platform. The application adopts a Reddit-style structure, enabling users to register, authenticate, and manage their accounts seamlessly. Within the platform, users can create, edit, and delete blog posts, as well as engage with others by posting comments and liking & disliking content.
 
 Comprehensive CRUD (Create, Read, Update, Delete) functionality has been implemented for user accounts, blog posts, and comments, ensuring that users retain full control over their contributions and may update or remove their content at any time. An integrated admin panel provides moderation capabilities and allows users to submit support requests or feature suggestions directly through the platform.
 
@@ -93,5 +93,21 @@ The MVP focuses on essential functionality for all users, including viewing the 
 Should-have features include filtering and sorting posts by category or date, searching posts by title, author, or keywords, and updating personal account profiles. Could-have features for future iterations include social media login/signup, bookmarking favourite posts, viewing analytics dashboards, and enhanced customisation options.
 
 By defining the scope in this way, Threadly ensures a clear focus on delivering a seamless user experience while allowing room for expansion and additional functionality in later versions.
+
+
+
+## Structure Plane
+### User Stories
+The Threadly platform has been designed around clear user stories to guide the structure and functionality of the app. These stories ensure the site meets the needs of different user types, including guests, registered users, admins, and mobile users.
+
+**Guest users** can browse public posts and featured content to understand what the platform offers before registering. They see clear prompts to sign up or log in, making it easy to get started.  
+
+**Registered users** can create an account, log in, and access their dashboard. They can add, edit, and delete posts, upload images to enhance their content, and engage with other users through comments and likes. Additional features include searching, filtering, and sorting posts to quickly find content, rating posts to track favourites, and managing their account details, such as updating their display name or profile information. 
+
+**Admins** have access to a dedicated Django admin panel to manage users and content efficiently. They can edit or delete any posts, review user-submitted content to ensure the platform remains appropriate, and manage posts directly from the admin interface.  
+
+**Mobile users** can access Threadly on smartphones and tablets, allowing them to read, create, and update posts while on the go. Image uploads and post creation are optimised for mobile, enabling a seamless experience across devices.  
+
+Finally, all users are provided with friendly, informative error pages (e.g., 404 or 500) and see their most recent posts first in their dashboard, ensuring clarity, accessibility, and a smooth user experience.
 
 
