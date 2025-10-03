@@ -148,3 +148,26 @@ The main colours for the site are:
   - **(Foreground White)** – Used for text, icons, and forms on coloured or dark backgrounds, ensuring clean, crisp readability across all devices.  
 
 These colours are defined as **CSS variables** for consistent application throughout the platform, resulting in a cohesive and visually engaging aesthetic that complements Threadly’s focus on gaming and community engagement.
+
+
+
+
+
+### Typography
+Threadly uses **Google Fonts** to ensure high-quality, accessible typography across all devices and browsers. Fonts are imported using CSS `@import`, with appropriate fallbacks for maximum compatibility.
+
+  - **Headings (h1, h2, h3):** The font **Poppins** was selected for all headings due to its geometric, modern style. Its clean lines and contemporary design make headlines stand out, giving the site a polished, distinctive visual identity while remaining highly legible.  
+  - **Paragraphs and body text:** **Poppins** is also used for body copy, maintaining consistency while providing excellent readability at various sizes. Its friendly, modern tone complements the gaming-inspired colour palette, creating a cohesive and user-friendly reading experience throughout the site.  
+  - **Icons and UI elements:** The **Font Awesome** library supports the interface with scalable, recognisable icons. These icons are stylistically aligned with Poppins, enhancing usability by providing clear visual cues for actions, navigation, and social interactions.  
+
+Together, this typographic approach balances style and readability, contributing to Threadly’s modern, vibrant, and accessible gaming blog design.
+
+
+
+### Imagery
+All images used in Threadly were sourced from a variety of online platforms and are **not intended for commercial use**. The visuals were selected to reflect gaming culture and to enhance the immersive experience of the blog.  
+
+Example images used for posts, banners, and thumbnails are intended to demonstrate how the platform displays content and populate the interface in a realistic way. These images provide context for the layout and functionality, helping users visualise their own posts and interactions within the platform.  
+
+Overall, the imagery is clean, bold, and culturally relevant to gaming, reinforcing Threadly’s purpose as a community-driven, interactive blog for gamers.
+
