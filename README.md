@@ -122,3 +122,29 @@ During development, it became clear that additional granularity was needed to su
 The schema follows relational database best practices, reducing redundancy, maintaining clarity, and supporting future enhancements to Threadly’s interactive features.
 
 
+
+## Skeleton Plane
+### Wireframes
+The initial wireframes for Threadly were created using **Adobe Illustrator** to plan the layout, structure, and user flow of the gaming blog platform. Wireframes were designed for **mobile, tablet, and desktop** screens to ensure a fully responsive and accessible experience across all devices.
+
+These wireframes established the information hierarchy and guided the user journey, covering key views such as the homepage, dashboard, post creation and management pages, and error pages. They provided a visual blueprint throughout development, helping to determine the placement of navigation, search, filter, and CRUD elements with a **mobile-first approach**.
+
+
+    - inset image here 
+    - insert image here
+    
+
+
+
+## Surface Plane
+### Colour Scheme
+The Threadly colour palette draws inspiration from vibrant gaming aesthetics, combining **blue and pink tones** to create a modern, energetic, and immersive feel. The scheme balances clarity and readability with playful accents, reflecting the dynamic world of gaming and community interaction.
+
+The main colours for the site are:
+  - **(Gaming Blue)** – Used for headings, buttons, and hyperlinks. This bright blue adds a bold, confident tone while maintaining clarity and consistency across the interface.  
+  - **(Pixel Pink)** – Applied to call-to-actions, badges, and hover states, this vibrant pink introduces energy and highlights key interactive elements.  
+  - **(Smoke White)** – Utilised for the footer, navigation, and text on light backgrounds. It provides contrast, grounding the interface and ensuring readability.  
+  - **(Background Grey)** – A soft, neutral background colour that keeps the focus on content and enhances the visibility of the primary accents.  
+  - **(Foreground White)** – Used for text, icons, and forms on coloured or dark backgrounds, ensuring clean, crisp readability across all devices.  
+
+These colours are defined as **CSS variables** for consistent application throughout the platform, resulting in a cohesive and visually engaging aesthetic that complements Threadly’s focus on gaming and community engagement.
