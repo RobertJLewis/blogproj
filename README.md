@@ -289,3 +289,34 @@ The Profile page is a personalised space where users can manage their account an
 ### Error Pages
 Threadly includes custom error pages to provide a friendly, branded experience whenever something goes wrong. The 400 page handles malformed or invalid requests, the 403 page addresses attempts to access restricted content, the 404 page manages broken or incorrect links, and the 500 page responds to unexpected server errors. Each page features gaming-themed illustrations and clear calls-to-action, guiding users back to the homepage while maintaining visual consistency and brand identity. These pages reduce confusion, preserve trust, and ensure a polished user experience even in error scenarios.
 
+
+
+## Development Process
+Threadly was developed using an iterative, feature-driven approach:
+
+  - Planned the site structure, wireframes (created in Adobe), and database schema.
+  - Set up the Django project with a connected PostgreSQL database.
+  - Implemented user authentication with Django Allauth.
+  - Developed core CRUD functionality for posts, comments, and user profiles.
+  - Built dynamic filtering, search, and personalised blog feed features.
+  - Focused on accessibility, responsive design, and a clean UI.
+  - Completed manual and automated testing, final documentation, and deployed to Heroku.
+  - Version control was managed using Git and GitHub, with regular, descriptive commits to track progress and maintain a clear development history.
+
+
+## Future Implementations
+To expand Threadly’s functionality and improve the user experience, the following features are being considered for future development:
+
+  - **Dark & Light Mode (Manual & Auto Toggle)** – Allow users to switch between light and dark themes, with an option to respect device system preferences.
+  - **Advanced Post Filtering & Tagging** – Introduce filtering by game genre, tags, popularity, or post date to improve discoverability.
+  - **Social Media Sign-In Options** – Offer Google, Facebook, or Apple login for quicker onboarding.
+  - **Public Profile Sharing** – Let users create shareable public profiles to showcase their posts and interactions.
+  - **Post Bookmarking & Favorites** – Enable users to save or highlight posts for easy reference later.
+  - **Media Previews** – Embed images, GIFs, or video clips in posts for richer content presentation.
+  - **Community Comments & Reactions** – Add enhanced commenting, reactions, or mini-discussions to posts.
+  - **Notifications & Alerts** – Implement opt-in notifications for replies, new posts, or trending content.
+  - **Bulk Post Management** – Allow users to manage multiple posts at once, including editing or deleting content.
+  - **Profile Customisation** – Offer additional options for avatars, banners, or bio enhancements.
+  - **Content Export & Backup** – Enable exporting posts or user data for personal backup or offline reference.
+  - **Gamification & Leaderboards** – Reward active contributors with badges, points, or leaderboards to boost engagement.
+These enhancements aim to make Threadly a more interactive, engaging, and personalised platform for the gaming community.
