@@ -459,3 +459,28 @@ To clone your forked Threadly repository:
   - **Visual Studio Code** – Primary code editor for writing and debugging Django and front-end code.  
   - **Google Fonts** – Integrated modern, readable fonts across the blog.  
   - **Font Awesome** – Icon library used to enhance UI elements like buttons, navigation, and social links.  
+
+
+
+
+
+
+
+## Content
+The posts, comments, and profiles featured on Threadly are created by users and demo content was generated to illustrate the blog’s functionality. Game titles, screenshots, and other metadata were sourced from publicly available information online for demonstration purposes and are not intended for commercial use.
+
+All UI text, instructions, labels, button copy, and page descriptions were written by me to align with Threadly’s tone, functionality, and overall user experience.
+
+## Media
+  - **Adobe Stock** - Used to source royalty-free images for the blog, including gaming-themed banners and illustrations.
+  - **google/www.** - Used for images but not intended for commerical use. 
+
+## Acknowledgments
+I would like to thank the following people for their support and guidance:  
+  - **Jubril Akolade** – My Code Institute mentor for guidance and feedback.  
+  - **Ax de Klerk, Jordan Acomba & Steve Powell** – My Code Institute fellow students, who collaborated and provided support throughout the project.  
+  - **Friends and family gamers** – For testing Threadly and offering feedback on usability.  
+  - **Code Institute Slack Peer Review** – Thank you to everyone who took the time to review my project and provide helpful feedback.  
+
+
+
