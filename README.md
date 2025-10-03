@@ -130,9 +130,7 @@ The initial wireframes for Threadly were created using **Adobe Illustrator** to 
 These wireframes established the information hierarchy and guided the user journey, covering key views such as the homepage, dashboard, post creation and management pages, and error pages. They provided a visual blueprint throughout development, helping to determine the placement of navigation, search, filter, and CRUD elements with a **mobile-first approach**.
 
 
-    - inset image here 
-    - insert image here
-    
+![Wireframe of the blog project](assets/wireframe.png)
 
 
 
@@ -461,8 +459,18 @@ To clone your forked Threadly repository:
   - **Font Awesome** – Icon library used to enhance UI elements like buttons, navigation, and social links.  
 
 
+########################################
+########################################
 
+## Testing & Accessibility Tools
+  - **Coverage.py** – Measures how much of the codebase is tested, ensuring the blog’s features are reliable.  
+  - **Google Chrome DevTools** – Used to debug, inspect elements, and test responsiveness across different screen sizes.  
+  - **Mobile First Plugin** – Simulates mobile device views to ensure layouts, posts, and profiles display correctly on smaller screens.  
+  - **ARIA DevTools** – Checks screen reader accessibility and proper use of ARIA landmarks for an inclusive experience.  
+  - **Webpage Spell-Check** – Chrome extension used to catch typos in posts, UI text, and documentation, maintaining professional quality.  
 
+########################################
+########################################
 
 
 
