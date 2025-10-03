@@ -171,3 +171,25 @@ Example images used for posts, banners, and thumbnails are intended to demonstra
 
 Overall, the imagery is clean, bold, and culturally relevant to gaming, reinforcing Threadly’s purpose as a community-driven, interactive blog for gamers.
 
+
+
+## Features
+Threadly is a full-stack web application designed to provide gamers and content creators with a dynamic, community-driven blog platform. The site delivers an engaging and intuitive experience with the following key features:
+
+  - **Blog Feed** – A continuously updated feed where users can browse posts from the community. 
+  - **Personalised User Dashboard** – Each registered user has a personalised view of their posts.
+  - **Post Creation & Management** – Users can create, edit, and delete their posts with rich content.
+  - **Commenting & Likes** – Engage with the community by commenting on posts and liking content to encourage interaction.  
+  - **Custom 404 & 500 Error Pages** – Friendly, branded error pages guide users when something goes wrong.  
+
+### Additional Features
+  - **Responsive Design** – All pages are fully responsive, working seamlessly across mobile, tablet, and desktop devices.  
+  - **Favicon** – A custom favicon is displayed in the browser tab for brand identity.  
+  - **Defensive Programming** – Permission checks ensure only authorised users can perform sensitive actions. Admin-level tasks, such as editing or deleting system-wide content, are restricted to superusers. Unauthorized access attempts redirect users to the login page, improving security and user experience.  
+
+### Footer
+The footer appears consistently across all pages to support navigation, brand presence, and accessibility. It includes:
+  - **Social Links** – Accessible icons linking to the site’s social media profiles.  
+  - **Quick Links** – Direct access to key pages such as Home and Register (dynamically showing Dashboard when logged in).
+  
+The layout is fully responsive, ensuring usability and accessibility across all devices.
