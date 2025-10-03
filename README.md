@@ -333,11 +333,57 @@ Accessibility has been a central focus throughout the development of Threadly. M
 Accessibility was evaluated using Lighthouse, WAVE, and manual testing in Chrome DevTools, ensuring Threadly is usable and accessible for a wide range of users.
 
 
-### Deployment & Local Development  
-Deployment  The Vinyl Crate project is deployed using Heroku, with Amazon RDS PostgreSQL for the live database and Cloudinary for media file storage. Create the Live Database While sqlite3 was used for local development, this is not suitable for production. Instead, a free-tier PostgreSQL database from Amazon AWS was used for deployment.
+### Deployment & Local Development 
+Deployment  The Vinyl Crate project is deployed using Heroku, with Amazon RDS PostgreSQL for the live database. Create the Live Database While sqlite3 was used for local development, this is not suitable for production. Instead, a free-tier PostgreSQL database from Amazon AWS was used for deployment.
   1. Sign in to your Amazon RDS Console and click Create Database.
   2. Select Standard Create, choose PostgreSQL, and select the Free tier template.
   3. Set a unique DB instance identifier, master username, and password.
   4. In the connectivity section, enable public access and ensure security group rules allow inbound connections from your IP.
   5. Launch the database and wait for the instance to become available.
   6. Once ready, copy the Endpoint and construct your DATABASE_URL in the following format: postgres://username:password@hostname:5432/dbname
+
+
+
+### Heroku App Setup
+1. In the Heroku Dashboard, click New → Create new app.
+2. Name your app uniquely, select a region, and click Create App.
+3. Go to the Settings tab → Reveal Config Vars → Add: DATABASE_URL: paste your constructed PostgreSQL URL (no quotes)
+
+## Preparation for Deployment in VS Code (with PostgreSQL on AWS)
+1. Install required packages Install dj_database_url and psycopg2 to enable Django to connect to an external PostgreSQL database: pip3 install dj_database_url==0.5.0 psycopg2 
+
+2. Freeze dependencies Save the installed packages to your requirements.txt: pip3 freeze > requirements.txt 
+
+3. Update settings.py Add the following import near the top of settings.py: import dj_database_url 
+
+4. Temporarily connect to AWS PostgreSQL In settings.py, comment out the default DATABASES block and add the following (replace with your actual AWS RDS connection string): DATABASES = { 'default': dj_database_url.parse('your-aws-rds-db-url-here') } 
+
+5. Test connection Run the server to confirm the connection works: python3 manage.py runserver 
+
+6. Apply migrations to AWS If successful, migrate your models to the new external database: python3 manage.py migrate 
+
+7. Create a superuser Set up admin access on the new database: python3 manage.py createsuperuser 
+
+8. Switch between local and external DB automatically Replace the temporary block in settings.py with the following conditional logic: 
+'DATABASE_URL' in os.environ: 
+DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) } 
+else: 
+DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3', } } 
+
+9. Install Gunicorn Add Gunicorn to serve your Django app in production: pip3 install gunicorn pip3 freeze > requirements.txt 
+
+10. Create a Procfile In the root of your project, create a file named Procfile with the following line (no extension, no blank line below): web: gunicorn your_project_name.wsgi:application 
+
+11. Disable collectstatic on Heroku (for now) Prevent Heroku from trying to collect static files during deployment: heroku config:set DISABLE_COLLECTSTATIC=1 --app your-heroku-app-name 
+
+12. Update allowed hosts In settings.py, update ALLOWED_HOSTS to include Heroku and local development: ALLOWED_HOSTS = ['your-app-name.herokuapp.com', 'localhost'] 
+
+13. Commit and push changes Save all changes, commit, and push to GitHub: git add . git commit -m "Prepare for Heroku deployment with AWS DB" git push origin main 
+
+14. Connect to Heroku Git and deploy Link your repo and deploy: heroku git:remote -a your-heroku-app-name git push heroku main 
+
+15. Verify deployment Your site should now be live (without static files). Re-enable collectstatic and confirm static assets are served correctly. 
+
+16. Enable automatic deploys Go to your Heroku app’s Deploy tab: 
+	- Connect your GitHub repo 
+	- Click Enable Automatic Deploys
