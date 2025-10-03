@@ -320,3 +320,24 @@ To expand Threadly’s functionality and improve the user experience, the follow
   - **Content Export & Backup** – Enable exporting posts or user data for personal backup or offline reference.
   - **Gamification & Leaderboards** – Reward active contributors with badges, points, or leaderboards to boost engagement.
 These enhancements aim to make Threadly a more interactive, engaging, and personalised platform for the gaming community.
+
+
+
+## Accessibility
+Accessibility has been a central focus throughout the development of Threadly. Measures implemented to ensure the platform is inclusive and user-friendly include:
+  - Using semantic HTML5 elements to improve structure and navigation for assistive technologies.
+  - Providing descriptive alt text for all meaningful images, including user avatars, post images, and banners.
+  - Applying ARIA labels to interactive elements such as icon-only buttons, links, and form controls for screen reader clarity.
+  - Maintaining strong colour contrast across the UI, particularly in key areas like buttons, links, and navigation (see Colour Scheme).
+  - Ensuring visible focus states and full keyboard navigability for all interactive components.
+Accessibility was evaluated using Lighthouse, WAVE, and manual testing in Chrome DevTools, ensuring Threadly is usable and accessible for a wide range of users.
+
+
+### Deployment & Local Development  
+Deployment  The Vinyl Crate project is deployed using Heroku, with Amazon RDS PostgreSQL for the live database and Cloudinary for media file storage. Create the Live Database While sqlite3 was used for local development, this is not suitable for production. Instead, a free-tier PostgreSQL database from Amazon AWS was used for deployment.
+  1. Sign in to your Amazon RDS Console and click Create Database.
+  2. Select Standard Create, choose PostgreSQL, and select the Free tier template.
+  3. Set a unique DB instance identifier, master username, and password.
+  4. In the connectivity section, enable public access and ensure security group rules allow inbound connections from your IP.
+  5. Launch the database and wait for the instance to become available.
+  6. Once ready, copy the Endpoint and construct your DATABASE_URL in the following format: postgres://username:password@hostname:5432/dbname
