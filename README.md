@@ -193,3 +193,47 @@ The footer appears consistently across all pages to support navigation, brand pr
   - **Quick Links** – Direct access to key pages such as Home and Register (dynamically showing Dashboard when logged in).
   
 The layout is fully responsive, ensuring usability and accessibility across all devices.
+
+
+
+
+
+## Website Pages
+### Home Page (Feed)
+The Home Page serves as the main feed, displaying posts from all users in a dynamic, interactive stream.
+
+**What it does:**
+  - Shows posts from the community, including text and tags.
+  - Allows users to comment on and like posts.
+  - Highlights trending or recent posts for easy discovery.
+
+**User Benefits:**
+  - Keeps users engaged with fresh content.
+  - Encourages interaction and community participation.
+  - Provides a clear overview of recent activity and popular posts.
+
+**Interactive Elements:**
+  - Commenting system for user engagement.
+  - Like buttons for posts.
+  - Responsive layout for mobile, tablet, and desktop users.
+
+---
+
+### Create Post Page
+The Create Post page allows users to publish new content to the platform.
+
+**What it does:**
+  - Provides a form for adding a title, body text, and tags.
+  - Supports inline validation to ensure required fields are completed correctly.
+
+**User Benefits:**
+  - Enables users to contribute to the community easily.
+  - Allows content creation without unnecessary page reloads.
+  - Ensures posts are complete and properly formatted.
+
+**Interactive Elements:**
+  - Dynamic form fields for text and images.
+  - Real-time validation feedback.
+  - Submit button to publish the post directly to the feed.
+
+---
