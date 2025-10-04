@@ -2,7 +2,10 @@
 {% block content %}
 
 <article class="media content-section">
-  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="user own profile">
+  <img class="rounded-circle article-img" 
+       src="{% if object.author.profile.image %}{{ object.author.profile.image.url }}{% else %}https://blogproj-media.s3.eu-north-1.amazonaws.com/media/profile_pics/default.png{% endif %}" 
+       alt="profile image">
+       
   <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
@@ -18,6 +21,7 @@
       <p class="article-content">{{ object.content }}</p>
   </div>
 </article>
+
 
 <hr>
 

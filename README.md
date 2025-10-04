@@ -5,6 +5,8 @@ This project demonstrates the implementation of the Django framework with Python
 Comprehensive CRUD (Create, Read, Update, Delete) functionality has been implemented for user accounts, blog posts, and comments, ensuring that users retain full control over their contributions and may update or remove their content at any time. An integrated admin panel provides moderation capabilities and allows users to submit support requests or feature suggestions directly through the platform.
 
 
+<img src="/assets/images/threadly_gaming_readme_hero.png">
+
 
 ## Table of Contents
 1. [Introduction](#introduction)  
@@ -130,7 +132,7 @@ The initial wireframes for Threadly were created using **Adobe Illustrator** to 
 These wireframes established the information hierarchy and guided the user journey, covering key views such as the homepage, dashboard, post creation and management pages, and error pages. They provided a visual blueprint throughout development, helping to determine the placement of navigation, search, filter, and CRUD elements with a **mobile-first approach**.
 
 
-<img src="/assets/wireframe.png">
+<img src="/assets/images/wireframe.png">
 
 
 
@@ -388,7 +390,7 @@ DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_
 
 
 
-    ## Generating a Secure SECRET_KEY & Configuring DEBUG Settings
+## Generating a Secure SECRET_KEY & Configuring DEBUG Settings
 When a Django project is created, it includes a default `SECRET_KEY`. Using the default key in production is a security risk. For Threadly, a strong, unique key should be generated and stored securely.
   1. Use a tool like the [Django Secret Key Generator](https://djecrety.ir/) to create a random, secure key. Copy the generated key.
   2. In your **Heroku Dashboard**, navigate to your app’s **Settings** tab and add a new **Config Var**:
