@@ -130,7 +130,8 @@ The initial wireframes for Threadly were created using **Adobe Illustrator** to 
 These wireframes established the information hierarchy and guided the user journey, covering key views such as the homepage, dashboard, post creation and management pages, and error pages. They provided a visual blueprint throughout development, helping to determine the placement of navigation, search, filter, and CRUD elements with a **mobile-first approach**.
 
 
-![Wireframe](blogproj/assets/wireframe.png)
+<img src="/blogproj/assets/wireframe.png">
+
 
 
 ## Surface Plane
