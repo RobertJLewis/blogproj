@@ -28,10 +28,19 @@ This document explains how the **Gaming Blog App** was tested. It includes valid
 ## Validation Testing
 
 ### W3C Validator
-The HTML for the app was checked using the [W3C Markup Validator](https://validator.w3.org/). All pages were tested to ensure proper syntax and no critical errors. Any issues found were fixed immediately to maintain clean markup.  
+The HTML code for the Gaming Blog App was thoroughly checked using the [W3C Markup Validator](https://validator.w3.org/). Every page of the application, including the home page, post detail pages, creation forms, and user profile pages, was validated to ensure that the markup follows proper HTML standards and syntax rules.  
+
+During validation, any errors or warnings identified—such as missing closing tags, improperly nested elements, or invalid attributes—were addressed immediately to maintain clean and well-structured HTML. This process helps ensure that the app is robust, compatible with modern browsers, and less likely to encounter rendering issues. 
+
+By using the W3C Validator, the app’s HTML maintains a high standard of quality, which contributes to better accessibility, improved SEO, and more consistent behaviour across different browsers and devices. Continuous validation throughout development also helped catch minor mistakes early, preventing them from affecting the user experience.
 
 ### W3C CSS Validator
-The CSS was checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). Stylesheets were validated to ensure there were no errors or broken rules, keeping the design consistent across browsers.
+The CSS for the Gaming Blog App was thoroughly checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). All stylesheets, including those for the main layout, forms, buttons, and post elements, were validated to ensure proper syntax and adherence to CSS standards.  
+
+Any errors, such as invalid properties, missing semicolons, or unsupported values, were corrected immediately to maintain a clean and consistent design. This validation process helps prevent unexpected styling issues across different browsers and ensures that layouts, fonts, and interactive elements display correctly for all users.  
+
+By validating the CSS, the app achieves a professional and polished appearance, reduces cross-browser inconsistencies, and improves maintainability for future updates. Regular use of the CSS validator during development also helped identify minor mistakes early, making the design process smoother and more reliable.
+
 
 ### JavaScript Validator
 All JavaScript code was tested using online linters and browser developer tools. This ensured there were no syntax errors or runtime issues affecting CRUD operations, login/logout, or other interactive features.
