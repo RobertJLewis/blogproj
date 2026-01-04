@@ -3,22 +3,26 @@ from django.contrib.auth.models import User
 from PIL import Image
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import User
 import os
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='profile_pics/default.png', upload_to='profile_pics')
+    
+    # Make the image field uneditable
+    image = models.ImageField(
+        default='profile_pics/default.png',
+        upload_to='profile_pics',
+        editable=False  # 🔒 users cannot change it
+    )
+    
     favorite_game = models.CharField(max_length=100, blank=True)
     twitter = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
     facebook = models.URLField(blank=True, null=True)
     bio = models.TextField(blank=True)
 
-
     def __str__(self):
         return f'{self.user.username} Profile'
-
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -31,6 +35,7 @@ class Profile(models.Model):
                 img.thumbnail(output_size)
                 img.save(self.image.path)
 
+# Signals to automatically create and save profiles
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:

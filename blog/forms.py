@@ -1,36 +1,23 @@
 from django import forms
 from .models import Comment, Post
 
-# Existing comment form
+# Comment form: only text
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
 
 
-# Quick post form (like "What's on your mind?" box)
-from django import forms
-from .models import Post
-
+# Quick post form: only text, no images/videos
 class QuickPostForm(forms.ModelForm):
-    media = forms.FileField(required=False)
-
     class Meta:
         model = Post
-        fields = ['title', 'content', 'image'] 
+        fields = ['title', 'content']  # Removed 'image' and any file fields
 
     def save(self, commit=True, user=None):
         post = super().save(commit=False)
 
-        media = self.cleaned_data.get('media')
-        if media:
-            if media.content_type.startswith('image/'):
-                post.image = media
-                post.video = None
-            elif media.content_type.startswith('video/'):
-                post.video = media
-                post.image = None
-
+        # Assign the user as the author
         if user:
             post.author = user
 
