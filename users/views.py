@@ -12,7 +12,10 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account Successfully Created for {username} Login In Now!!!')
+            messages.success(
+                request,
+                f'Account Successfully Created for {username}. Login In Now!!!'
+            )
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -23,6 +26,7 @@ def register(request):
 def profile(request):
     return render(request, 'users/profile.html')
 
+
 @login_required
 def profile_update(request):
     # Ensure the user has a profile
@@ -30,9 +34,11 @@ def profile_update(request):
 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST,
-                                   request.FILES,
-                                   instance=profile)
+        p_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=profile
+        )
 
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()

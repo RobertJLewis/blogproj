@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="content-section">
-    <form action="" method="post" enctype="multipart/form-data">  <!-- <- Add enctype here -->
+    <form method="post" enctype="multipart/form-data"> <!-- action omitted: posts to same URL -->
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">New Post</legend>
@@ -13,8 +13,12 @@
             <button class="btn btn-outline-info" type="submit">Post</button>
         </div>
     </form>
+
     <div class="border-top pt-3">
-        <small class="text-muted">Already have an account? <a href="{% url 'blog-home' %}">Go Back</a></small>
+        <small class="text-muted">
+            Already have an account? 
+            <a href="{% url 'blog-home' %}">Go Back</a>
+        </small>
     </div>
 </div>
 {% endblock content %}

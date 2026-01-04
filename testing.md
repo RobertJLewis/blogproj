@@ -34,6 +34,27 @@ During validation, any errors or warnings identified—such as missing closing t
 
 By using the W3C Validator, the app’s HTML maintains a high standard of quality, which contributes to better accessibility, improved SEO, and more consistent behaviour across different browsers and devices. Continuous validation throughout development also helped catch minor mistakes early, preventing them from affecting the user experience.
 
+### HTML Validator
+| File                           | Tool to Use     | Validation Type                  | Screenshot / Evidence                    |
+| -------------------------------| --------------- | -------------------------------- | -------------------------------------- |
+| `users/templates/login.html`    | W3C Validator   | HTML syntax, structure           | `testing/login_html.png`                |
+| `users/templates/logout.html`   | W3C Validator   | HTML syntax, structure           | `testing/logout_html.png`               |
+| `users/templates/profile_update.html` | W3C Validator   | HTML syntax, structure     | `testing/profile_update_html.png`       |
+| `users/templates/profile.html`  | W3C Validator   | HTML syntax, structure           | `testing/profile_html.png`              |
+| `users/templates/register.html` | W3C Validator   | HTML syntax, structure           | `testing/register_html.png`             |
+
+| `blog/templates/about.html`             | W3C Validator   | HTML syntax, structure           | `testing/about_html.png`                 |
+| `blog/templates/base.html`              | W3C Validator   | HTML syntax, structure           | `testing/base_html.png`                  |
+| `blog/templates/comment_confirm_delete.html` | W3C Validator | HTML syntax, structure        | `testing/comment_confirm_delete_html.png`|
+| `blog/templates/comment_form.html`      | W3C Validator   | HTML syntax, structure           | `testing/comment_form_html.png`          |
+| `blog/templates/home.html`              | W3C Validator   | HTML syntax, structure           | `testing/home_html.png`                  |
+| `blog/templates/post_confirm_delete.html` | W3C Validator | HTML syntax, structure          | `testing/post_confirm_delete_html.png`   |
+| `blog/templates/post_detail.html`       | W3C Validator   | HTML syntax, structure           | `testing/post_detail_html.png`           |
+| `blog/templates/post_form.html`         | W3C Validator   | HTML syntax, structure           | `testing/post_form_html.png`             |
+| `blog/templates/privacy_policy.html`    | W3C Validator   | HTML syntax, structure           | `testing/privacy_policy_html.png`        |
+| `blog/templates/terms_of_service.html`  | W3C Validator   | HTML syntax, structure           | `testing/terms_of_service_html.png`      |
+
+
 ### W3C CSS Validator
 The CSS for the Gaming Blog App was thoroughly checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). All stylesheets, including those for the main layout, forms, buttons, and post elements, were validated to ensure proper syntax and adherence to CSS standards.  
 
@@ -41,12 +62,31 @@ Any errors, such as invalid properties, missing semicolons, or unsupported value
 
 By validating the CSS, the app achieves a professional and polished appearance, reduces cross-browser inconsistencies, and improves maintainability for future updates. Regular use of the CSS validator during development also helped identify minor mistakes early, making the design process smoother and more reliable.
 
+  ### Screenshot / Evidence
+  testing/blog_main_css.png
+
 
 ### JavaScript Validator
 All JavaScript code was tested using online linters and browser developer tools. This ensured there were no syntax errors or runtime issues affecting CRUD operations, login/logout, or other interactive features.
 
 ### Python Validator
 Backend Python code (if applicable, e.g., for APIs or server-side scripts) was checked using linters such as `pylint` and `flake8` to ensure clean code and catch any logical or syntax issues.
+
+| File                       | Tool to Use     | Validation Type                  | Screenshot / Evidence            |
+| -------------------------- | --------------- | -------------------------------- | -------------------------------- |
+| `users/views.py`           | flake8 / pylint | PEP8, syntax, logic              | `testing/users_views.png`        |
+| `users/models.py`          | flake8          | PEP8, syntax                     | `testing/users_models.png`       |
+| `users/forms.py`           | flake8 / pylint | PEP8, syntax                     | `testing/users_forms.png`        |
+| `users/admin.py`           | flake8          | PEP8, syntax                     | `testing/users_admin.png`        |
+
+| `blog/views.py`            | flake8 / pylint | PEP8, syntax, logic              | `testing/blog_views.png`         |
+| `blog/models.py`           | flake8          | PEP8, syntax                     | `testing/blog_models.png`        |
+| `blog/forms.py`            | flake8 / pylint | PEP8, syntax                     | `testing/blog_forms.png`         |
+| `blog/urls.py`             | flake8          | PEP8, syntax                     | `testing/blog_urls.png`          |
+
+| `blogproj/settings.py`     | flake8 / pylint | PEP8, security check (DEBUG off) | `testing/blogproj_settings.png`  |
+| `manage.py`                | flake8          | PEP8, syntax                     | `testing/root_manage.png`        |
+
 
 ---
 

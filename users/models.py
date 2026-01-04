@@ -5,16 +5,17 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import os
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    
+
     # Make the image field uneditable
     image = models.ImageField(
         default='profile_pics/default.png',
         upload_to='profile_pics',
         editable=False  # 🔒 users cannot change it
     )
-    
+
     favorite_game = models.CharField(max_length=100, blank=True)
     twitter = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
@@ -26,7 +27,7 @@ class Profile(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        
+
         # Only try to resize if the file exists
         if self.image and os.path.exists(self.image.path):
             img = Image.open(self.image.path)
@@ -35,11 +36,13 @@ class Profile(models.Model):
                 img.thumbnail(output_size)
                 img.save(self.image.path)
 
+
 # Signals to automatically create and save profiles
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):

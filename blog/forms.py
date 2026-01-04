@@ -1,6 +1,7 @@
 from django import forms
 from .models import Comment, Post
 
+
 # Comment form: only text
 class CommentForm(forms.ModelForm):
     class Meta:

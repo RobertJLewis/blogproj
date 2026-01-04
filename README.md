@@ -334,7 +334,7 @@ Accessibility was evaluated using Lighthouse, WAVE, and manual testing in Chrome
 
 
 ### Deployment & Local Development 
-Deployment  The Vinyl Crate project is deployed using Heroku, with Amazon RDS PostgreSQL for the live database. Create the Live Database While sqlite3 was used for local development, this is not suitable for production. Instead, a free-tier PostgreSQL database from Amazon AWS was used for deployment.
+Deployment The Vinyl Crate project is deployed using Heroku, with Amazon RDS PostgreSQL for the live database. Create the Live Database While sqlite3 was used for local development, this is not suitable for production. Instead, a free-tier PostgreSQL database from Amazon AWS was used for deployment.
   1. Sign in to your Amazon RDS Console and click Create Database.
   2. Select Standard Create, choose PostgreSQL, and select the Free tier template.
   3. Set a unique DB instance identifier, master username, and password.

@@ -1,61 +1,70 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-
 <article class="media content-section">
-  <img class="rounded-circle article-img" 
-       src="{% if object.author.profile.image %}{{ object.author.profile.image.url }}{% else %}https://blogproj-media.s3.eu-north-1.amazonaws.com/media/profile_pics/default.png{% endif %}" 
-       alt="profile image">
-       
-  <div class="media-body">
-      <div class="article-metadata">
-        <a class="mr-2" href="#">{{ object.author }}</a>
-        <small class="text-muted">{{ object.date_posted }}</small> <br>
-        {% if object.author == user %}
-          <div>
-              <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}">Update</a>
-              <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
-          </div>
-        {% endif %}
-      </div>
-      <h2 class="article-title">{{ object.title }}</h2>
-      <p class="article-content">{{ object.content }}</p>
-  </div>
-</article>
+    <!-- Profile image -->
+    <img class="rounded-circle article-img"
+         src="{% if object.author.profile.image %}{{ object.author.profile.image.url }}{% else %}https://blogproj-media.s3.eu-north-1.amazonaws.com/media/profile_pics/default.png{% endif %}"
+         alt="profile image">
 
+    <div class="media-body">
+        <!-- Post metadata -->
+        <div class="article-metadata">
+            <span class="mr-2">{{ object.author }}</span>
+            <small class="text-muted">{{ object.date_posted }}</small><br>
+
+            {% if object.author == user %}
+            <div class="mt-1">
+                <a class="btn btn-outline-success btn-sm" href="{% url 'blog-update' object.id %}">Update</a>
+                <a class="btn btn-outline-danger btn-sm" href="{% url 'blog-delete' object.id %}">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Post content -->
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+    </div>
+</article>
 
 <hr>
 
-<h4>Comments</h4>
+<!-- Comments -->
+<h3>Comments</h3>
 {% for comment in object.comments.all %}
-  <div class="content-section mb-2 p-2 border rounded">
+<div class="content-section mb-2 p-2 border rounded">
     <strong>{{ comment.author }}</strong>
     <small class="text-muted">{{ comment.date_posted }}</small><br>
     {{ comment.content }}
+
     {% if comment.author == user %}
-      <div class="mt-1">
+    <div class="mt-1">
         <a class="btn btn-sm btn-outline-success" href="{% url 'comment-update' comment.id %}">Edit</a>
         <a class="btn btn-sm btn-outline-danger" href="{% url 'comment-delete' comment.id %}">Delete</a>
-      </div>
+    </div>
     {% endif %}
-  </div>
+</div>
 {% empty %}
-  <p>No comments yet.</p>
+<p>No comments yet.</p>
 {% endfor %}
 
+<!-- Add a comment -->
 {% if user.is_authenticated %}
-  <hr>
-  <h5>Add a comment</h5>
-  <form method="post">
+<hr>
+<h4>Add a Comment</h4>
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button class="btn btn-primary" type="submit">Post Comment</button>
-  </form>
+</form>
 
-  <!-- Back button with same style -->
-  <div class="mt-2">
-    <a href="{% url 'blog-home' %}" class="btn btn-secondary mt-2">Back to Home</a>
-  </div>
+<!-- Back button -->
+<div class="mt-2">
+    <a href="{% url 'blog-home' %}" class="btn btn-secondary">Back to Home</a>
+</div>
 {% else %}
-  <p><a href="{% url 'login' %}">Log in</a> to comment.</p>
+<p><a href="{% url 'login' %}">Log in</a> to comment.</p>
 {% endif %}
+
 {% endblock content %}

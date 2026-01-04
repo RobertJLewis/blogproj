@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post, Comment
 from .forms import CommentForm, QuickPostForm
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse
 
 
 def about(request):
@@ -27,7 +27,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['form'] = CommentForm()  # empty comment form
         return context
-    
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = CommentForm(request.POST)
@@ -48,7 +48,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
+
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
 
@@ -104,8 +104,6 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.object.post.get_absolute_url()
 
 
-from django.urls import reverse
-
 @login_required
 def like_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -122,6 +120,7 @@ def like_post(request, pk):
         post.likes.add(user)
 
     return redirect(request.META.get('HTTP_REFERER', 'blog-home'))
+
 
 @login_required
 def dislike_post(request, pk):
@@ -141,8 +140,6 @@ def dislike_post(request, pk):
     return redirect(request.META.get('HTTP_REFERER', 'blog-home'))
 
 
-
-
 @login_required
 def home(request):
     if request.method == 'POST':
@@ -155,6 +152,7 @@ def home(request):
 
     posts = Post.objects.all().order_by('-date_posted')
     return render(request, 'blog/home.html', {'form': form, 'posts': posts})
+
 
 @login_required
 def add_comment(request, pk):
@@ -174,6 +172,7 @@ def add_comment(request, pk):
 
 def privacy_policy(request):
     return render(request, 'blog/privacy_policy.html')
+
 
 def terms_of_service(request):
     return render(request, 'blog/terms_of_service.html')
