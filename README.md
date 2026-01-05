@@ -19,6 +19,10 @@ Comprehensive CRUD (Create, Read, Update, Delete) functionality has been impleme
 4. [Structure Plane](#structure-plane)  
    - [User Stories](#user-stories)  
 5. [Database Schema](#database-schema)  
+   - [Expanded Models for User Interaction](#expanded-models-for-user-interaction)  
+   - [Key Database Relationships](#key-database-relationships)  
+   - [Database Design Principles](#database-design-principles)  
+   - [Schema Diagram](#schema-diagram)
 6. [Skeleton Plane (Wireframes)](#skeleton-plane-wireframes)  
    - [Wireframes](#wireframes)  
 7. [Surface Plane (UI Design)](#surface-plane-ui-design)  
@@ -113,16 +117,60 @@ The Threadly platform has been designed around clear user stories to guide the s
 Finally, all users are provided with friendly, informative error pages (e.g., 404 or 500) and see their most recent posts first in their dashboard, ensuring clarity, accessibility, and a smooth user experience.
 
 
-
 ## Database Schema
-Threadly uses a relational database (PostgreSQL) to provide structured and reliable storage, with support for referential integrity, ideal for managing user accounts, posts, comments, and likes.
+Threadly uses a **relational database (PostgreSQL)** to provide structured, reliable storage with support for referential integrity, making it ideal for managing user accounts, posts, comments, and likes. The database schema ensures that all data is connected logically and supports the full functionality of the app, including CRUD operations, user interactions, and future feature extensions.  
 
-The MVP initially focused on a **Post** model linked to Django’s built-in **User** model. Each post stores core information such as title, content, category, creation date, and an optional image. This setup enabled rapid prototyping, full CRUD functionality, and integration with the Django admin panel.
+The MVP initially focused on a **Post** model linked to Django’s built-in **User** model. Each post stores core information such as:
 
-During development, it became clear that additional granularity was needed to support user interactions such as comments and likes. To address this, dedicated **Comment** and **Like** models were introduced. Each comment is linked to a post and its author, while likes are linked to both the user and the post, establishing clear one-to-many relationships. This structure improves data accuracy, scalability, and the ability to extend functionality in the future, such as filtering posts, sorting by popularity, or displaying user interactions at the post level.
+- `title` – the title of the post  
+- `content` – the main body of the post  
+- `category` – a field to categorize posts  
+- `created_at` – timestamp of post creation  
+- `image` – optional field for post image  
 
-The schema follows relational database best practices, reducing redundancy, maintaining clarity, and supporting future enhancements to Threadly’s interactive features.
+This setup enabled rapid prototyping, full CRUD functionality, and integration with the Django admin panel for easy management.  
 
+### Expanded Models for User Interaction
+As development progressed, additional models were introduced to support richer user interactions:
+
+- **Comment Model:**  
+  - Linked to both the `Post` and its `author` (User)  
+  - Stores the content of the comment and creation timestamp  
+  - One-to-Many relationship: A single post can have multiple comments  
+
+- **Like Model:**  
+  - Linked to both the `Post` and `User` who liked it  
+  - Tracks user engagement and ensures that each user can only like a post once  
+  - One-to-Many relationship: A post can have multiple likes from different users  
+
+- **Profile Model:**  
+  - One-to-One relationship with `User`  
+  - Stores additional user information such as bio, profile picture, and settings  
+
+### Key Database Relationships
+- **User ↔ Profile:** One-to-One  
+- **User ↔ Post:** One-to-Many  
+- **Post ↔ Comment:** One-to-Many  
+- **User ↔ Comment:** One-to-Many  
+- **User ↔ Like:** One-to-Many  
+- **Post ↔ Like:** One-to-Many  
+
+These relationships are designed to enforce **referential integrity**, reduce redundancy, and make querying for related data efficient. For example, retrieving all comments for a post or all posts liked by a user can be done easily through the established foreign key relationships.  
+
+### Database Design Principles
+The schema follows **relational database best practices**, including:
+
+- Clear **primary keys** for each table (`id` fields)  
+- **Foreign keys** to link related models  
+- Support for **scalability**, allowing future features like filtering posts, sorting by popularity, or displaying user interaction summaries  
+- Separation of concerns to ensure maintainability and reduce data duplication  
+
+This structured approach ensures that the Gaming Blog App is robust, scalable, and ready for future enhancements.
+
+### Schema Diagram
+The diagram below visualizes the database schema, showing all models, their fields, and the relationships between them:  
+
+<img src="/assets/images/database_schema.png" alt="Gaming Blog App Database Schema">
 
 
 ## Skeleton Plane
