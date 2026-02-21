@@ -25,6 +25,11 @@
         <!-- Post content -->
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content }}</p>
+        {% if object.image %}
+        <div class="mb-2">
+            <img src="{{ object.image.url }}" class="img-fluid rounded" style="max-height: 300px; width: auto;" alt="Post image">
+        </div>
+        {% endif %}
     </div>
 </article>
 

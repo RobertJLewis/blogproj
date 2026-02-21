@@ -13,7 +13,7 @@ class CommentForm(forms.ModelForm):
 class QuickPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']  # Removed 'image' and any file fields
+        fields = ['title', 'content', 'image']
 
     def save(self, commit=True, user=None):
         post = super().save(commit=False)

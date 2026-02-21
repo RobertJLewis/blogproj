@@ -23,5 +23,4 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        # Removed 'image' so users cannot change it
-        fields = ['favorite_game', 'twitter', 'linkedin', 'facebook', 'bio']
+        fields = ['image', 'favorite_game', 'twitter', 'linkedin', 'facebook', 'bio']

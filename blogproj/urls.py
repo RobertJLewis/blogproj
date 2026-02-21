@@ -34,5 +34,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='blog-home'), name='logout'),
 ]
  
-if settings.DEBUG:
+if settings.DEBUG or settings.MEDIA_URL.startswith('/media/'):
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

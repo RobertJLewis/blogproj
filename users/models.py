@@ -9,11 +9,9 @@ import os
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    # Make the image field uneditable
     image = models.ImageField(
         default='profile_pics/default.png',
         upload_to='profile_pics',
-        editable=False  # 🔒 users cannot change it
     )
 
     favorite_game = models.CharField(max_length=100, blank=True)
@@ -28,13 +26,18 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
-        # Only try to resize if the file exists
-        if self.image and os.path.exists(self.image.path):
-            img = Image.open(self.image.path)
+        # Resize only for local filesystems that expose a real file path.
+        try:
+            image_path = self.image.path
+        except (ValueError, NotImplementedError):
+            image_path = None
+
+        if self.image and image_path and os.path.exists(image_path):
+            img = Image.open(image_path)
             if img.height > 300 or img.width > 300:
                 output_size = (300, 300)
                 img.thumbnail(output_size)
-                img.save(self.image.path)
+                img.save(image_path)
 
 
 # Signals to automatically create and save profiles

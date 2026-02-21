@@ -26,8 +26,7 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 
 ALLOWED_HOSTS = [
@@ -53,7 +52,6 @@ INSTALLED_APPS = [
     # Your apps
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
-    'storages',
 ]
 
 # AWS S3 settings (outside of INSTALLED_APPS)
@@ -62,13 +60,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'eu-north-1')
 AWS_QUERYSTRING_AUTH = False  # public URLs
-AWS_DEFAULT_ACL = 'public-read'  # <-- This is the fix!
-
-# Tell Django to use S3 for media files
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = (
-    f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/media/'
-)
+AWS_DEFAULT_ACL = 'public-read'
 
 
 MIDDLEWARE = [
@@ -176,7 +168,20 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
+
+# Use S3 for media only when fully configured.
+if all([
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_STORAGE_BUCKET_NAME,
+]):
+    INSTALLED_APPS += ['storages']
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = (
+        f'https://{AWS_STORAGE_BUCKET_NAME}.s3.'
+        f'{AWS_S3_REGION_NAME}.amazonaws.com/media/'
+    )
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
