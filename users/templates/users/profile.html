@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
 
@@ -10,7 +11,7 @@
 <div class="cardd">
   <div class="m-b-25"> 
     <img class="rounded-circle article-img" 
-    src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}https://blogproj-media.s3.eu-north-1.amazonaws.com/media/profile_pics/default.png{% endif %}" 
+    src="{% if user.profile.image and user.profile.image.name != 'profile_pics/default.png' %}{{ user.profile.image.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}" 
     alt="profile image">
   </div>
 

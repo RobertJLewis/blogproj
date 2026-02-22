@@ -1,11 +1,12 @@
 {% extends 'blog/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 <article class="media content-section">
     <!-- Profile image -->
     <img class="rounded-circle article-img"
-         src="{% if object.author.profile.image %}{{ object.author.profile.image.url }}{% else %}https://blogproj-media.s3.eu-north-1.amazonaws.com/media/profile_pics/default.png{% endif %}"
+         src="{% if object.author.profile.image and object.author.profile.image.name != 'profile_pics/default.png' %}{{ object.author.profile.image.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}"
          alt="profile image">
 
     <div class="media-body">
