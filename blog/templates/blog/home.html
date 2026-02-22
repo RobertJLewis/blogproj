@@ -25,7 +25,7 @@
 {% for post in posts %}
 <article class="media content-section position-relative mb-4 p-3 border rounded">
     <img class="rounded-circle article-img" 
-         src="{% if post.author.profile.image and post.author.profile.image.name != 'profile_pics/default.png' %}{{ post.author.profile.image.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}" 
+         src="{% if post.author.profile.image and 'default' not in post.author.profile.image.name|lower %}{{ post.author.profile.image.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}" 
          alt="profile image">
 
     <div class="media-body">
