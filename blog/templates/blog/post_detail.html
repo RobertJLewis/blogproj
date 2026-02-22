@@ -7,6 +7,7 @@
     <!-- Profile image -->
     <img class="rounded-circle article-img"
          src="{% if object.author.profile.image and 'default' not in object.author.profile.image.name|lower %}{{ object.author.profile.image.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}"
+         onerror="this.onerror=null;this.src='{% static 'blog/images/default-profile.png' %}';"
          alt="profile image">
 
     <div class="media-body">

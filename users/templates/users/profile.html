@@ -12,6 +12,7 @@
   <div class="m-b-25"> 
     <img class="rounded-circle article-img" 
     src="{% if user.profile.image and 'default' not in user.profile.image.name|lower %}{{ user.profile.image.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}" 
+    onerror="this.onerror=null;this.src='{% static 'blog/images/default-profile.png' %}';"
     alt="profile image">
   </div>
 
